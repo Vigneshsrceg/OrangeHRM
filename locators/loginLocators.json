@@ -1,0 +1,10 @@
+{
+  "login": {
+    "usernameInput": "input[name='username']",
+    "passwordInput": "input[name='password']",
+    "loginButton": "button[type='submit']"
+  },
+  "dashboard": {
+    "header": "h6"
+  }
+}

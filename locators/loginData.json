@@ -1,0 +1,24 @@
+{
+  "roles": {
+    "admin": {
+      "username": "Admin",
+      "password": "admin123",
+      "permissions": ["manage_users", "view_reports", "full_access"]
+    },
+    "normalUser": {
+      "username": "Admin",
+      "password": "admin123",
+      "permissions": ["view_profile", "submit_requests"]
+    },
+    "verifierUser": {
+      "username": "verifier_user",
+      "password": "verifier123",
+      "permissions": ["verify_documents", "comment"]
+    },
+    "repairUser": {
+      "username": "repair_user",
+      "password": "repair123",
+      "permissions": ["create_repairs", "view_repairs"]
+    }
+  }
+}

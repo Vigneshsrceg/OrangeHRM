@@ -3,6 +3,7 @@ const util = require('../utils/utils.js')
 const loginLocators = require('../locators/loginLocators.json');
 const logMessage = require('../pages/logmessage');
 const logindata = require('../locators/logindata.json');
+const login = require('../locators/login.js');
 
 const username=loginLocators.login.usernameInput;
 const user= logindata.roles.normalUser.username; // normal user role has been updated
@@ -12,9 +13,12 @@ test('Login', async ({ page }) => {
 
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
-    await page.locator(username).fill(user);
+    await login(page, user, pwd.password);
+    
+    /*await page.locator(username).fill(user);
     await page.locator(loginLocators.login['passwordInput']).fill(pwd.password);
-    await page.locator(loginLocators.login.loginButton).click();
+    await page.locator(loginLocators.login.loginButton).click();*/
+
     await page.waitForTimeout(3000); // optional wait
    
     const hdrstatus=await util.isElementVisible(page, loginLocators.dashboard.header);

@@ -14,7 +14,7 @@ test('Login', async ({ page }) => {
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
     await login(page, user, pwd.password);
-    
+
     /*await page.locator(username).fill(user);
     await page.locator(loginLocators.login['passwordInput']).fill(pwd.password);
     await page.locator(loginLocators.login.loginButton).click();*/
@@ -28,7 +28,10 @@ test('Login', async ({ page }) => {
     const status=await dashcontent.includes('Dashboard');
     console.log('Dashbaord content is :',dashcontent, status);
    
-    await page.waitForTimeout(2000); // optional wait
+    await page.waitForTimeout(1000); // optional wait
+
+    await util.clickElement(page, loginLocators.sidepanels.pimPanel);
+       await page.waitForTimeout(5000); // optional wait
     await page.close();
 
 });

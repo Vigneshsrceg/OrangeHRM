@@ -7,5 +7,21 @@
   },
   "dashboard": {
     "header": "h6"
+  },
+  "sidepanels":{
+    "adminPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Admin']",
+    "pimPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='PIM']",
+    "leavePanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Leave']",
+    "TimePanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Time']",
+    "RecruitmentPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Recruitment']",
+    "MyInfoPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='My Info']",
+    "PerformancePanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Performance']",
+    "DashboardPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Dashboard']",
+    "DirectoryPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Directory']",
+    "MaintenancePanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Maintenance']",
+    "BuzzPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Buzz']"
+    
+    
+
   }
 }

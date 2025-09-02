@@ -18,6 +18,14 @@ async function textContent(page, locator) {
     }
 }
 
+async function clickElement(page, locator) {
+    try {
+        await page.locator(locator).click();
+        console.log(`Clicked element at locator: ${locator}`);
+    } catch (error) {
+        console.error(`Error clicking element at locator: ${locator}`, error);
+    }
+}
 async function textIncludes(page, locator, expectedText) {
   try {
     const content = await page.locator(locator).textContent();
@@ -30,4 +38,4 @@ async function textIncludes(page, locator, expectedText) {
   }
 }
 
-module.exports = { isElementVisible,textContent,textIncludes };
+module.exports = { isElementVisible,textContent,textIncludes,clickElement };

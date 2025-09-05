@@ -30,8 +30,21 @@ test('Login', async ({ page }) => {
    
     await page.waitForTimeout(1000); // optional wait
 
-    await util.clickElement(page, loginLocators.sidepanels.pimPanel);
+    await util.clickElement(page, loginLocators.sidepanels.TimePanel);
        await page.waitForTimeout(5000); // optional wait
+
+         // Wait for table
+  await page.waitForSelector('.oxd-table');
+
+  // Get table data
+  const { headers, records } = await util.getTableData(page, '.oxd-table');
+
+  console.log("🟢 Column Names:", headers);
+  console.log("🟢 Records:");
+  console.table(records);  // Pretty table output
+    await page.waitForTimeout(2000); // optional wait
+
+    
     await page.close();
 
 });

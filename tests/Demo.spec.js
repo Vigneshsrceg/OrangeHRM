@@ -1,49 +1,58 @@
-import { test, expect } from '@playwright/test';
+const { test, expect } = require('@playwright/test');
 
-//  Set test-specific configuration
-test.use({
-  viewport: { width: 1920, height: 1080 },
-  deviceScaleFactor: 2,
+test('Demo test', async ({ page }) => {
+  await page.goto('https://testautomationpractice.blogspot.com/');
+
+  //await page.locator('#country').selectOption('India');
+
+  await page.locator('#country').selectOption({value: 'uk'});
+
+
+  await page.waitForTimeout(2000); // just to see the result
+
+ await page.locator('#country').selectOption({index: 1});
+
+
+await page.waitForTimeout(2000); // just to see the result
+
+const options = await page.locator('#country option').allTextContents();
+console.log('Available options are :', options);
+
+// print all from options
+for(const opt of options){
+  console.log('Option:', opt);
+}
+
+await page.waitForTimeout(2000); // just to see the result
+
+
+/*
+  const table = page.locator('#productTable');
+
+  const cols = await table.locator('thead tr th').count();
+  console.log('Number of columns in table:', cols);
+
+  const rowCards = table.locator('tbody tr');
+  const rowsCount = await rowCards.count();
+  console.log('Number of rows in table:', rowsCount);
+
+  // ✅ Use locator.filter to find rows containing "Chrome"
+  const chromeRows = rowCards.filter({
+    has:page.locator('td'),
+    hasText: 'Smartphone'
+  });// hasText: 'Chrome' });
+  await chromeRows.locator('input').check();
+  console.log('Number of rows with Chrome:', await chromeRows.count());
+  //console.log('Row text:', await chromeRows.nth(2).textContent());
+  // Optionally assert
+
+  await expect(chromeRows).toHaveCount(1);
+  const chromeRow = chromeRows.nth(0); // first matching row
+const thirdCol  = chromeRow.locator('td').nth(3); // 3rd column (0-based)
+console.log('Third column value:', await thirdCol.click());
+
+// Optionally still assert the count
+await expect(chromeRows).toHaveCount(1);*/
+
+  await page.waitForTimeout(3000); // just to see the result
 });
-
- 
-test.beforeEach(async ({ page }) => {
-        // Runs before each test and navigates to the login page
-        await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    });
-
-
-test.afterEach(async ({ page }) => {
-    // Runs after each test
-    await page.waitForTimeout(2000);
-    await page.close();
-
-    });
-
-test('basic test', async ({ page }) => {
-  const pgtitle = await page.title();
-  await expect(pgtitle).toContain('Orange');
-
-  await page.waitForTimeout(2000); // optional wait
-});
-
-test('login test', async ({ page }) => {
-
-  //enter username
-  await page.locator('input[name="username"]').fill('Admin');
-    //enter password
-    await page.locator('input[name="password"]').fill('admin123');
-    //click on login button
-    await page.locator('button[type="submit"]').click();
-    await page.waitForTimeout(2000); // optional wait
-
-    //dashabord content is displayed
-    const dashcontent = await page.locator('h6').textContent();
-    await expect(dashcontent).toContain('Dashboard');
-    console.log('Dashbaord content is :',dashcontent);
-    await page.waitForTimeout(2000); // optional wait
-
-});
-
-
- 

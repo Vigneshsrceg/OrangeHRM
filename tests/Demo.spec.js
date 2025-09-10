@@ -24,6 +24,33 @@ for(const opt of options){
 }
 
 await page.waitForTimeout(2000); // just to see the result
+  // Replace with your selector
+  const dateInput = page.locator('#datepicker');
+
+  // Set date in format YYYY-MM-DD
+  await dateInput.fill('2025-09-05');
+
+  // Assert value
+  await expect(dateInput).toHaveValue('2025-09-05');
+await page.waitForTimeout(2000); // just to see the result
+   // Pick 15 September 2025
+ await page.evaluate(() => {
+  document.querySelector('#txtDate').value = '15/09/2025';
+});
+
+// Assert correct value
+await expect(page.locator('#txtDate')).toHaveValue('15/09/2025');
+
+await page.waitForTimeout(2000); // just to see the result
+// Set start date
+await page.evaluate(() => {
+  document.querySelector('#start-date').value = '2025-09-01';
+});
+
+// Set end date
+await page.evaluate(() => {
+  document.querySelector('#end-date').value = '2025-09-15';
+});
 
 
 /*

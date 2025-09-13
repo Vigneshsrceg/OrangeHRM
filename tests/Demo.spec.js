@@ -42,6 +42,11 @@ await page.waitForTimeout(2000); // just to see the result
 await expect(page.locator('#txtDate')).toHaveValue('15/09/2025');
 
 await page.waitForTimeout(2000); // just to see the result
+
+await page.evaluate(() => {
+  document.querySelector('#txtDate').value = '14/09/2025';
+});
+
 // Set start date
 await page.evaluate(() => {
   document.querySelector('#start-date').value = '2025-09-01';

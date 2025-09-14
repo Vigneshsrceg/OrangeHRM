@@ -4,6 +4,7 @@ const loginLocators = require('../locators/loginLocators.json');
 const logMessage = require('../pages/logmessage');
 const logindata = require('../locators/logindata.json');
 const login = require('../locators/login.js');
+const { log } = require('console');
 
 const username=loginLocators.login.usernameInput;
 const user= logindata.roles.normalUser.username; // normal user role has been updated
@@ -44,7 +45,13 @@ test('Login', async ({ page }) => {
   console.table(records);  // Pretty table output
     await page.waitForTimeout(2000); // optional wait
 
-    
+    await util.textIncludes(page, loginLocators.sidepanels.TimePanel, 'Time');
+    await page.waitForTimeout(2000); // optional wait
+
+    // Logout steps
+   await util.logout(page, loginLocators.logout.profileIcon, loginLocators.logout.logoutButton);
+   logMessage('Logout completed', true); 
+   await page.waitForTimeout(2000); // optional wait
     await page.close();
 
 });

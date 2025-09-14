@@ -20,8 +20,9 @@
     "DirectoryPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Directory']",
     "MaintenancePanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Maintenance']",
     "BuzzPanel":"//a[contains(@class, 'oxd-main-menu-item')]//span[text()='Buzz']"
-    
-    
-
+  },
+  "logout": {
+    "profileIcon": ".oxd-userdropdown-tab",
+    "logoutButton": "a:has-text('Logout')"
   }
 }

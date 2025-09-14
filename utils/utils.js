@@ -27,6 +27,19 @@ async function clickElement(page, locator) {
         console.error(`Error clicking element at locator: ${locator}`, error);
     }
 }
+
+async function logout(page, profileIconLocator, logoutButtonLocator) {
+    try {
+        await page.locator(profileIconLocator).click();
+        await page.locator(logoutButtonLocator).click();
+        console.log('Logout successful');
+    }
+
+    catch (error) {
+        console.error('Error during logout', error);
+    }
+}
+
 async function textIncludes(page, locator, expectedText) {
   try {
     const content = await page.locator(locator).textContent();
@@ -95,4 +108,4 @@ async function getTableData(page, tableSelector) {
 
 
 
-module.exports = { isElementVisible,textContent,textIncludes,clickElement,getTableData };
+module.exports = { logout,isElementVisible,textContent,textIncludes,clickElement,getTableData };
